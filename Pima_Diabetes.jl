@@ -56,7 +56,7 @@ target = df1[!, :Outcome];
 X_train, X_test, y_train, y_test = ms.train_test_split(Array(features),Array(target), test_size = 0.2, random_state=42)
 
 @pyimport sklearn
-# import sklearn
+@pyimport xgboost as xgb
 svm = pyimport("sklearn.svm") #for SVC
 tree = pyimport("sklearn.tree") #for decision tree
 neighbors = pyimport("sklearn.neighbors") #for kn
@@ -65,10 +65,9 @@ ensemble = pyimport("sklearn.ensemble") #for ensemble methods (ex. Randomforest,
                                         #AdaBoost, GradientBoosting)
 
                                         # list of models we are going to use for classification task 
-models = [svm.SVC(),tree.DecisionTreeClassifier(),neighbors.KNeighborsClassifier(),linear_model.LogisticRegression(),ensemble.RandomForestClassifier(),ensemble.AdaBoostClassifier(),ensemble.GradientBoostingClassifier()]
+models = [xgb.XGBClassifier(),svm.SVC(),tree.DecisionTreeClassifier(),neighbors.KNeighborsClassifier(),linear_model.LogisticRegression(),ensemble.RandomForestClassifier(),ensemble.AdaBoostClassifier(),ensemble.GradientBoostingClassifier()]
 
 metrics = pyimport("sklearn.metrics")
-# import metrics(acc. score)
 for model in models
     #fit train & test data to every model and print the accuracy
     model.fit(X_train, y_train)
