@@ -1,2 +1,2 @@
 # Diabetes_prediction
-Diabetes_prediction ML 
+Diabetes_prediction ML (Julia)
